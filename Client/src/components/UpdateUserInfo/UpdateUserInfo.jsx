@@ -15,7 +15,7 @@ const UpdateUserInfo = ({ email, department, year, name, setIsUpdated }) => {
   const changeUserInfo = async () => {
     setIsSubmitting(true);
     try {
-      const res = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}api/user/update`, userInfo);
+      const res = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/user/update`, userInfo);
       toast.success(res.data.message || "Profile Updated!");
       setIsUpdated(false); // Close modal on success
     } catch (error) {
