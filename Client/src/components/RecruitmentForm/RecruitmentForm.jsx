@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getUserInfo } from '../../api/userapis';
-import ContentWriter from './ContentWriter';
-import GraphicDesigner from './GraphicDesigner';
-import Photography from './Photography';
-import PublicRelation from './PublicRelation';
-import VideoEditor from './VideoEditor';
-import WebDeveloper from './WebDeveloper';
 
 function RecruitmentForm() {
   const [step, setStep] = useState(1);
@@ -27,16 +21,6 @@ function RecruitmentForm() {
     reason: ''
   });
 
-  const categoryComponents = {
-    "Content Writer": ContentWriter,
-    "Graphic Designer": GraphicDesigner,
-    "Photography": Photography,
-    "Public Relations": PublicRelation,
-    "Video Editor": VideoEditor,
-    "Web/App Developer": WebDeveloper
-  };
-
-  const SelectedComponent = categoryComponents[formData.category];
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -219,9 +203,120 @@ function RecruitmentForm() {
               exit={{ x: -20, opacity: 0 }}
               className="space-y-6"
             >
-              {/* FILE RENDERING WITH CONDITIONS */}
-              {SelectedComponent && <SelectedComponent />}
+              <div className="space-y-6">
 
+                {/* COMMON FOR ALL */}
+                <div className="flex flex-col gap-2">
+                  <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                    Share your work (Drive / Portfolio / GitHub)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="https://drive.google.com/..."
+                    className="bg-white/5 border border-white/20 rounded-2xl p-4 text-white outline-none focus:border-[#d03c19]"
+                  />
+                  <p className="text-xs text-white/40">
+                    Make sure link is public
+                  </p>
+                </div>
+
+                {/* CONTENT WRITER */}
+                {formData.category === "Content Writer" && (
+                  <>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        Write a short article (100–150 words)
+                      </label>
+                      <textarea
+                        rows="5"
+                        placeholder="Topic: Impact of social media on students"
+                        className="bg-white/5 border border-white/20 rounded-2xl p-4 text-white outline-none focus:border-[#d03c19]"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        Do you have prior writing experience?
+                      </label>
+                      <textarea
+                        rows="3"
+                        className="bg-white/5 border border-white/20 rounded-2xl p-4 text-white outline-none"
+                      />
+                    </div>
+                  </>
+                )}
+
+                {/* WEB DEVELOPER */}
+                {formData.category === "Web/App Developer" && (
+                  <>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        Deployed Project Link
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="https://yourapp.vercel.app"
+                        className="bg-white/5 border border-white/20 rounded-2xl p-4 text-white outline-none"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        Rate your development skills (1-10)
+                      </label>
+                      <input type="range" min="1" max="10" className="w-full" />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        Describe your best project
+                      </label>
+                      <textarea
+                        rows="4"
+                        className="bg-white/5 border border-white/20 rounded-2xl p-4 text-white outline-none"
+                      />
+                    </div>
+                  </>
+                )}
+
+                {/* GRAPHIC DESIGNER */}
+                {formData.category === "Graphic Designer" && (
+                  <>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        Tools you use
+                      </label>
+                      <input className="bg-white/5 border border-white/20 rounded-2xl p-4 text-white" />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        Rate your design skills (1-10)
+                      </label>
+                      <input type="range" min="1" max="10" className="w-full" />
+                    </div>
+                  </>
+                )}
+
+                {/* PR */}
+                {formData.category === "Public Relations" && (
+                  <>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        How would you promote an event?
+                      </label>
+                      <textarea rows="4" className="bg-white/5 border border-white/20 rounded-2xl p-4 text-white" />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[#FFB5B5] text-[10px] font-bold uppercase tracking-widest ml-1">
+                        Rate your communication skills (1-10)
+                      </label>
+                      <input type="range" min="1" max="10" className="w-full" />
+                    </div>
+                  </>
+                )}
+              </div>
               <div className="flex gap-4">
                 <button
                   onClick={handleBack}

@@ -4,6 +4,7 @@ import AdminRoute from './AdminRoute';
 import GoogleAuthWrapper from '../components/GoogleAuthWrapper/GoogleAuthWrapper'; //google sign up
 import { getAdmin } from '../api/userapis';
 import Loader from '../components/Loader/Loader';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Almanac = lazy(() => import('../pages/Almanac/Almanac'));
@@ -48,8 +49,8 @@ function Routers() {
 
   return (
     <Suspense fallback={<Loader/>}>
+      <ScrollToTop />
       <Routes>
-
         <Route path='/sign-up' element={<GoogleAuthWrapper />} />
         {/* <Route path='/log-in' element={<LoginPage />} /> */}
 

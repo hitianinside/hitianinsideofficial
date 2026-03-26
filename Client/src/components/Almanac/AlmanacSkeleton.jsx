@@ -27,7 +27,7 @@ export default function AlmanacSkeleton() {
       </h2>
 
       {/* Illustration skeleton */}
-      <div className="flex flex-wrap justify-center gap-5 mt-6">
+      <div className="flex flex-wrap justify-center gap-5 my-6">
         {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}

@@ -1,5 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
+import { FaUser } from "react-icons/fa"
 
 function Teamtable({ data }) {
   const year_2019 = [
@@ -88,8 +89,9 @@ function Teamtable({ data }) {
         <motion.div
           key={index}
           whileHover={{ scale: 1.05 }}
-          className="bg-white text-black p-5 rounded-2xl shadow-xl hover:shadow-2xl transition-all"
+          className="bg-white text-black p-3 rounded-2xl shadow-xl hover:shadow-2xl transition-all flex flex-col justify-center items-center"
         >
+          <div className="m-2 p-2 border rounded-2xl invert bg-white"><FaUser size={100}/></div>
           <div className="font-bold text-lg">{member.name}</div>
           <div className="text-sm opacity-80">{member.position}</div>
           <div className="text-sm opacity-70">{member.department}</div>

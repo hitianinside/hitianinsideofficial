@@ -78,10 +78,6 @@ const EventsHome = () => {
           </button>
         </Link>
       </div>
-
-      {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <InstagramEmbed url="https://www.instagram.com/p/C16Al2UhmBg/" width={328} />
-          </div> */}
     </section>
   );
 }

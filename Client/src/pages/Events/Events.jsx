@@ -13,10 +13,12 @@ function Events() {
 
   //loading page first
   useEffect(() => {
-    setTimeout(() => {
-      setLoadingPage(false);
-    }, 1000);
-  }, [])
+      const timeout = setTimeout(() => {
+        setLoadingPage(false);
+      }, 500);
+  
+      return () => clearTimeout(timeout);
+    }, [])
 
   if (loadingPage) {
     return (
@@ -26,8 +28,8 @@ function Events() {
 
   return (
     <div className="bg-[#650808] flex justify-center min-h-screen">
-      <section className="events-home pb-16 w-full md:w-[80%]">
-        <h1 className="event-heading text-3xl md:text-6xl font-bold text-[#fdd0d0] pt-10 pb-10 font-hammersmith">
+      <section className="events-home pb-8 w-full md:w-[80%]">
+        <h1 className="event-heading text-3xl md:text-5xl font-bold text-[#fdd0d0] py-3 md:py-5 font-hammersmith">
           EVENTS
         </h1>
 

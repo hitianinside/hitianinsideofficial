@@ -8,10 +8,12 @@ function Almanac() {
 
   //Loading page
   useEffect(() => {
-    setTimeout(() => {
-      setLoadingPage(false);
-    }, 1000);
-  }, [])
+      const timeout = setTimeout(() => {
+        setLoadingPage(false);
+      }, 500);
+  
+      return () => clearTimeout(timeout);
+    }, [])
 
   if (loadingPage) {
     return (

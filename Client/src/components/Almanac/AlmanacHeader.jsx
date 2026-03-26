@@ -13,12 +13,12 @@ const AlmanacHeader = () => {
   return (
     <>
       <section
-        className="ps-[8%] pt-[6%]">
+        className="ps-[8%] pt-4 md:pt-8">
         <div className="max-w-[90%] md:max-w-[50%] relative z-10" data-aos="fade-up">
-          <h1 className="text-[2.8rem] md:text-[4.5rem] text-[#fdd0d0] font-bold font-hammersmith leading-tight">
+          <h1 className="text-3xl sm:text-5xl text-[#f5bcbc] font-bold font-hammersmith leading-tight uppercase">
             Almanac
           </h1>
-          <p className="text-[#f2b5b5] font-medium text-[1.2rem] leading-relaxed mt-3 font-hammersmith">
+          <p className="text-[#f2b5b5] font-medium text-sm sm:text-[1.2rem] leading-relaxed mt-3 font-hammersmith">
             Bringing to you the platform to unveil your astounding creativity through the official e-media of HIT. A platform to showcase your creativity in the form of your rhythmic poems, thrilling experiences, captured moments, beautiful arts, and animations, and glorify your ingenious talents by getting exposure through our Instagram handle.
           </p>
           <NavLink to="/almanac/almanac-form">
@@ -27,7 +27,7 @@ const AlmanacHeader = () => {
         </div>
 
         {/* Image Section */}
-        <div className="flex justify-end mt-[5%] md:mt-[-20%]" data-aos="fade-up">
+        <div className="flex justify-end relative bottom-10 md:bottom-20" data-aos="fade-up">
           <img
             src={almanac_img}
             alt="Almanac Visual"

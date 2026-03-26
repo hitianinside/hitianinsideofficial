@@ -4,11 +4,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 // all image
-import img1 from "../../assets/images/best_of_almanac/Aditi_bera_IT.jpg";
-import img2 from "../../assets/images/best_of_almanac/Ashwini_Kumar_IT.jpg";
-import img3 from "../../assets/images/best_of_almanac/Durba_Chattopadhyay_CHE.jpg";
-import img4 from "../../assets/images/best_of_almanac/Md Kaif_CSE_CS.jpg";
-import img5 from "../../assets/images/best_of_almanac/Mrinmoyee Sil_CSE.jpg";
+import img1 from "../../assets/images/best_of_almanac/Ankit_Maji.jpg";
+import img2 from "../../assets/images/best_of_almanac/Rounak_Saha.png";
+import img3 from "../../assets/images/best_of_almanac/Pratik_Chattopadhyay.jpg";
+import img4 from "../../assets/images/best_of_almanac/Soumi_Pradhan.jpg";
+import img5 from "../../assets/images/best_of_almanac/Subham_Kundu.png";
 
 
 const AboutusHome = () => {
@@ -34,7 +34,7 @@ const AboutusHome = () => {
         >
           The Maroon Squad, as the official media team of HIT, is a dynamic
           unit within the media club. Dedicated to keeping the campus
-          community informed, it meticulously cover and present ongoing
+          community informed, it meticulously covers and presents ongoing
           details about campus life.
         </p>
       </div>
@@ -74,7 +74,7 @@ const AboutusHome = () => {
                 </a>
               </div> */}
 
-      <div className="cards mt-20 grid grid-cols-1 md:grid-cols-5 gap-4 justify-between h-full max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
+      <div className="cards mt-20 grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-0 justify-between h-full max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
         <div className="card one rounded-r-md m-3 md:m-0 max-sm:w-[85%]">
           <img data-aos="flip-down" src={img1} alt="demo_image" />
         </div>

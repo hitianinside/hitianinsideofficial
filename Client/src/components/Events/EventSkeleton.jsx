@@ -38,13 +38,6 @@ export default function EventsSkeleton() {
               <div className="w-16 h-3 rounded bg-gradient-to-r from-[#7a2b2b] via-[#9e4c4c] to-[#7a2b2b] animate-[shimmer_1.5s_infinite_linear]"></div>
             </div>
           </div>
-
-          {/* Right: like/comment icons */}
-          <div className="flex flex-col gap-3 items-center">
-            <div className="w-6 h-6 rounded bg-gradient-to-r from-[#7a2b2b] via-[#9e4c4c] to-[#7a2b2b] animate-[shimmer_1.5s_infinite_linear]"></div>
-            <div className="w-6 h-6 rounded bg-gradient-to-r from-[#7a2b2b] via-[#9e4c4c] to-[#7a2b2b] animate-[shimmer_1.5s_infinite_linear]"></div>
-            <div className="w-6 h-6 rounded bg-gradient-to-r from-[#7a2b2b] via-[#9e4c4c] to-[#7a2b2b] animate-[shimmer_1.5s_infinite_linear]"></div>
-          </div>
         </div>
       </div>
 

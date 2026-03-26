@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { isAuthenticatedContext } from '../../context/context';
-import ContantUs from '../../components/ContactUs/contantUs';
 import { motion, AnimatePresence } from 'motion/react';
 import { FiLogOut, FiBarChart2, FiUser, FiEdit2 } from 'react-icons/fi';
 import { getUserInfo } from '../../api/userapis';
@@ -24,12 +23,16 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const { userData } = await getUserInfo();
-      setAllUserData(userData);
+      if (isAuthenticated) {
+        const { userData } = await getUserInfo();
+        setAllUserData(userData);
+      }else{
+        return null;
+      }
     }
 
     fetchUserInfo();
-  }, [isUpdated]);
+  }, [isUpdated, isAuthenticated]);
 
   const handleLogout = () => {
     localStorage.removeItem('user-info');
@@ -54,7 +57,7 @@ const Profile = () => {
     visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 300, damping: 24 } }
   };
 
-  const buttonStyle = "w-full sm:w-auto flex items-center justify-center gap-2 py-2.5 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md transform active:scale-95";
+  const buttonStyle = "w-auto flex items-center justify-center gap-2 py-2.5 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md transform active:scale-95";
 
   return (
     <div className='min-h-[40vh] overflow-x-hidden py-12 px-4 flex flex-col items-center text-gray-100 font-sans'>
@@ -119,7 +122,7 @@ const Profile = () => {
             {/* Action Buttons */}
             <motion.div variants={itemVariants} className="flex flex-wrap justify-center w-full gap-4">
               <NavLink to="/scorecards">
-                <button className={`${buttonStyle} bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]`}>
+                <button className={`${buttonStyle} bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] w-fit`}>
                   <FiBarChart2 className="w-5 h-5" /> Match Scores
                 </button>
               </NavLink>
@@ -161,15 +164,6 @@ const Profile = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="mt-20 w-full"
-      >
-        <ContantUs />
-      </motion.div>
       {
         isUpdated && <UpdateUserInfo email={allUserData.email} name={allUserData.name} department={allUserData.department} year={allUserData.year} setIsUpdated={setIsUpdated} />
       }

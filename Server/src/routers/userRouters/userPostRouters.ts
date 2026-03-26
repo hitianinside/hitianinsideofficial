@@ -26,13 +26,15 @@ const handleError = (res: Response, error: any, msg = "Internal Server Error!!")
 userPostRouter.post("/form", async (req: Request, res: Response) => {
   try {
     const { name, email, message } = req.body;
-    if (!name || !email)
+    if (!name || !email) {
       return res.status(400).json({ message: "Name and Email are required" });
+    }
 
     const contact = await Contact.create({ name, email, message });
     res.status(201).json({
       message: "Form submitted successfully",
-      id: contact._id
+      id: contact._id,
+      success : true
     });
   } catch (error) {
     handleError(res, error);
@@ -67,7 +69,8 @@ userPostRouter.post("/artwork", upload.single("file"), async (req: Request, res:
 
     res.status(201).json({
       message: "Artwork uploaded successfully",
-      id: artwork._id
+      id: artwork._id,
+      success : true
     });
   } catch (error) {
     handleError(res, error);
@@ -102,7 +105,8 @@ userPostRouter.post("/photography", upload.single("file"), async (req: Request, 
 
     res.status(201).json({
       message: "Photography uploaded successfully",
-      id: photo._id
+      id: photo._id,
+      success : true
     });
   } catch (error) {
     handleError(res, error);
@@ -133,7 +137,8 @@ userPostRouter.post("/poem", async (req: Request, res: Response) => {
 
     res.status(201).json({
       message: "Poem submitted successfully",
-      id: poemDoc._id
+      id: poemDoc._id,
+      success : true
     });
   } catch (error) {
     handleError(res, error);
@@ -165,7 +170,8 @@ userPostRouter.post("/video", upload.single("file"), async (req: Request, res: R
 
     res.status(201).json({
       message: "Video uploaded successfully",
-      id: video._id
+      id: video._id,
+      success : true
     });
   } catch (error) {
     handleError(res, error);
@@ -182,7 +188,7 @@ userPostRouter.post("/story", async (req: Request, res: Response) => {
         message: "Title and Story content are required"
       });
     }
-    
+
     const storyDoc = await Storys.create({
       name,
       year,
@@ -199,7 +205,8 @@ userPostRouter.post("/story", async (req: Request, res: Response) => {
 
     res.status(201).json({
       message: "Story submitted successfully",
-      id: storyDoc._id
+      id: storyDoc._id,
+      success : true
     });
   } catch (error) {
     handleError(res, error);

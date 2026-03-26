@@ -41,7 +41,7 @@ const OurEvents = () => {
   };
 
   return (
-    <div className="min-h-screen bg-transparent py-8 px-4 overflow-hidden">
+    <div className="bg-transparent py-8 px-4 overflow-hidden">
       {/* Animated Heading */}
       <motion.div
         initial={{ opacity: 0, letterSpacing: "-0.05em" }}
@@ -49,7 +49,7 @@ const OurEvents = () => {
         transition={{ duration: 1 }}
         className="text-center mb-5"
       >
-        <h1 className="text-2xl md:text-5xl font-bold text-[#fdd0d0] font-hammersmith leading-none uppercase">
+        <h1 className="text-3xl md:text-5xl font-bold text-[#fdd0d0] font-hammersmith leading-none uppercase">
           Our <span className="text-[#d03c19]">Events</span>
         </h1>
         <motion.div 
@@ -91,7 +91,7 @@ const OurEvents = () => {
                       rotateZ: index % 2 === 0 ? 1 : -1,
                       transition: { duration: 0.3 }
                     }}
-                    className="relative group bg-white/5 backdrop-blur-md border border-white/10 w-full max-w-[360px] rounded-[2.5rem] shadow-2xl overflow-hidden"
+                    className="relative group bg-white/5 backdrop-blur-md border border-white/10 w-full max-w-[360px] rounded-2xl shadow-2xl overflow-hidden"
                   >
                     {/* Glowing background effect on hover */}
                     <div className="absolute inset-0 bg-[#d03c19]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -106,24 +106,8 @@ const OurEvents = () => {
 
                     <div className="relative p-8 pt-2">
                       <div className="space-y-1">
-                        <p className="text-[#fdd0d0]/60 text-xs font-bold uppercase tracking-widest">Event Name</p>
+                        {/* <p className="text-[#fdd0d0]/60 text-xs font-bold uppercase tracking-widest">Event Name</p> */}
                         <h3 className="text-white text-xl font-bold truncate">{event.event_name}</h3>
-                      </div>
-                      
-                      <div className="mt-4 flex justify-between items-center">
-                        <div>
-                          <p className="text-[#fdd0d0]/60 text-xs font-bold uppercase tracking-widest">Date</p>
-                          <p className="text-white font-medium">{event.date}</p>
-                        </div>
-                        <motion.a
-                          whileTap={{ scale: 0.9 }}
-                          href={event.insta_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-[#d03c19] text-white p-3 rounded-2xl shadow-lg shadow-[#d03c19]/30"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        </motion.a>
                       </div>
                     </div>
                   </motion.div>

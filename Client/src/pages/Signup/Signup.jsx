@@ -1,4 +1,4 @@
-import { BiLogoGoogle } from "react-icons/bi"
+import { FcGoogle } from "react-icons/fc"
 import { useGoogleLogin } from '@react-oauth/google'
 import googleAuth from "../../api/googleapi";
 import { useNavigate } from 'react-router-dom';
@@ -88,7 +88,7 @@ const SignUp = () => {
           className="mt-10 w-full max-w-sm mx-auto flex items-center justify-center gap-4 px-6 py-3 rounded-full bg-gradient-to-r from-[#ff5a5a] to-[#d41717] font-bold text-lg shadow-xl border border-white/20"
         >
           <div className="bg-white/20 p-2 rounded-full backdrop-blur-md">
-            <BiLogoGoogle className="h-6 w-6" />
+            <FcGoogle className="h-6 w-6" />
           </div>
           Sign in with Google
         </motion.button>

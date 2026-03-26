@@ -185,8 +185,8 @@
 // Updated Team Component with Framer Motion + Cards UI
 import React, { useState } from "react";
 import { BiDownArrowCircle } from "react-icons/bi";
-import { motion } from "framer-motion";
-import Teamtable from "./TeamData/Teamtable"; // correct import
+import { motion } from "motion/react";
+import Teamtable from "./TeamData/Teamtable";
 
 function Team() {
   const teaminfo = [

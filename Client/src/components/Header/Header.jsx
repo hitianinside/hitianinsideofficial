@@ -64,19 +64,19 @@ function Header() {
   return (
     <>
       <div>
-        <nav className="border-gray-200 bg-[#650808] dark:bg-[#650808] dark:border-[#650808]">
+        <nav className="border-gray-200 relative bg-[#650808] dark:bg-[#650808] dark:border-[#650808]">
           <div className="max-w-screen-xl flex flex-wrap md:flex-nowrap items-center justify-between mx-auto p-4">
 
             <NavLink to="/" className="flex items-center ps-2 md:ps-5">
               <img src={logo} alt="INSIDE LOGO" className="h-8 mr-3" />
-              <span className="self-center text-xl md:text-2xl font-bold whitespace-nowrap text-white mb-1">
+              <span className="self-center text-xl md:text-2xl max-sm:hidden font-bold whitespace-nowrap text-white mb-1">
                 HITian Inside
               </span>
             </NavLink>
 
             {/* HAMBERGER SECTION */}
             <div className="flex gap-3 items-center md:hidden">
-              <NavLink to={profile.path} className="border rounded-full overflow-hidden">
+              <NavLink to={profile.path} className="border rounded-full overflow-hidden" onClick={() => setNavbarOpen(false)}>
                 {profilePic ?
                   <img src={profilePic} alt="profile_image" className="w-[28px]" />
                   :
@@ -133,11 +133,11 @@ function Header() {
             <AnimatePresence>
               {navbarOpen && (
                 <motion.div
-                  initial={{ x: "-100%", opacity: 0 }}
+                  initial={{ x: "100%", opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: "-100%", opacity: 0 }}
+                  exit={{ x: "100%", opacity: 0 }}
                   transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                  className="fixed inset-0 top-[70px] z-50 w-full h-screen bg-[#660909]/95 backdrop-blur-lg flex flex-col gap-6 text-2xl font-bold pt-10 px-10 text-white md:hidden"
+                  className="absolute inset-0 top-[70px] z-50 w-full h-fit bg-[#660909]/60 rounded-b-xl backdrop-blur-lg flex flex-col gap-6 text-2xl font-bold py-5 px-10 text-white md:hidden"
                 >
                   {navLinks.map((link, index) => (
                     <motion.div

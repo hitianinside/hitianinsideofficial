@@ -40,8 +40,8 @@ const BestOfAlmanac = () => {
         className="Almanac-section bg-no-repeat bg-bottom bg-cover"
       // style={{ backgroundImage: `url(${almanac_background})` }}
       >
-        <div className="bg-[#650808] py-10 text-center">
-          <h1 className="text-[2rem] md:text-[2.5rem] text-[#f5d9d9] font-bold">Best of Almanac</h1>
+        <div className="bg-[#650808] pt-0 pb-5 text-center">
+          <h1 className="text-[2rem] md:text-[2.5rem] uppercase text-[#f6c5c5] font-bold">Best of Almanac</h1>
         </div>
 
 

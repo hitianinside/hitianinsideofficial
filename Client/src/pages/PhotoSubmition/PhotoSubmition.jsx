@@ -108,7 +108,7 @@ const PhotoSubmition = () => {
   const helperTextStyle = "text-xs text-red-300/70 ml-2 font-normal";
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 flex flex-col items-center">
+    <div className="min-h-screen py-5 sm:py-8 px-4 sm:px-6 flex flex-col items-center">
       
       {/* Header Section */}
       <motion.div 
@@ -117,7 +117,7 @@ const PhotoSubmition = () => {
         transition={{ duration: 0.6 }}
         className="text-center mb-10"
       >
-        <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text p-4 bg-gradient-to-r from-red-400 to-rose-600 mb-4 tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-rose-600 pb-4 tracking-tight uppercase">
           Submit Your Photography
         </h1>
         <p className="text-red-200/80 text-lg max-w-xl mx-auto">
@@ -140,7 +140,7 @@ const PhotoSubmition = () => {
               id="name"
               type="text"
               value={formData.name}
-              placeholder="e.g., John Doe"
+              placeholder="e.g., Sourav Bera"
               className={inpStyle}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
