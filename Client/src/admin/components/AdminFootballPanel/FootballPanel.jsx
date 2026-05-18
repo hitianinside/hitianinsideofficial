@@ -40,7 +40,13 @@ const FootballPanel = () => {
         return;
       }
 
-      const res = await editFootballScores(id, data);
+      const res = await editFootballScores(id, {
+        matchType: data.match_type,
+        team1Goals: data.team1_details.team_goals,
+        team2Goals: data.team2_details.team_goals,
+        completed: data.completed
+      });
+
       toast.success(res.data.message);
 
     } catch (error) {
@@ -63,14 +69,14 @@ const FootballPanel = () => {
                   {/* team 1 information */}
                   <div className="flex flex-col">
                     <div className='grid grid-cols-2 items-center p-1'>
-                      <img src={score.team1_logo} alt={score.team1_name}
+                      <img src={score.team1_details.team_logo} alt={score.team1_details.team_name}
                         className='w-12 rounded-full' />
-                      <span className="font-bold text-lg">{score.team1_name}</span>
+                      <span className="font-bold text-lg">{score.team1_details.team_name}</span>
                     </div>
                     <span className="text-sm">Goals:
                       <input
                         type="number"
-                        value={score.team1_goals}
+                        value={score.team1_details.team_goals}
                         onChange={(e) => handleChangeFootballScores(footballScores, setFootballScores, e, index, "team1Goals")}
                         className="text-sm w-12 bg-[#6b0909] p-1" /></span>
                   </div>
@@ -80,14 +86,14 @@ const FootballPanel = () => {
                   {/* team 2 information */}
                   <div className="flex flex-col">
                     <div className='grid grid-cols-2 items-center p-1'>
-                      <span className="font-bold text-lg">{score.team2_name}</span>
-                      <img src={score.team2_logo} alt={score.team2_name}
+                      <span className="font-bold text-lg">{score.team2_details.team_name}</span>
+                      <img src={score.team2_details.team_logo} alt={score.team2_details.team_name}
                         className='w-12 rounded-full' />
                     </div>
                     <span className="text-sm">Goals:
                       <input
                         type="number"
-                        value={score.team2_goals}
+                        value={score.team2_details.team_goals}
                         onChange={(e) => handleChangeFootballScores(footballScores, setFootballScores, e, index, "team2Goals")}
                         className="text-sm w-12 bg-[#6b0909] p-1" />
                     </span>

@@ -13,21 +13,21 @@ export function handleChangeCricketScores(cricketScores, setCricketScores, e, in
   else if (title === "team1run") {
     updatedScores[index] = {
       ...updatedScores[index],
-      team1_run: e.target.value
+      team1_details: { ...updatedScores[index].team1_details, team_run: e.target.value }
     }
   }
 
   else if (title === "team1wicketloss") {
     updatedScores[index] = {
       ...updatedScores[index],
-      team1_wicket_loss: e.target.value
+      team1_details: { ...updatedScores[index].team1_details, team_wicket_loss: e.target.value }
     }
   }
 
   else if (title === "team1overplayed") {
     updatedScores[index] = {
       ...updatedScores[index],
-      team1_over_played: e.target.value
+      team1_details: { ...updatedScores[index].team1_details, team_over_played: e.target.value }
     }
   }
 
@@ -35,21 +35,21 @@ export function handleChangeCricketScores(cricketScores, setCricketScores, e, in
   else if (title === "team2run") {
     updatedScores[index] = {
       ...updatedScores[index],
-      team2_run: e.target.value
+      team2_details: { ...updatedScores[index].team2_details, team_run: e.target.value }
     }
   }
 
   else if (title === "team2wicketloss") {
     updatedScores[index] = {
       ...updatedScores[index],
-      team2_wicket_loss: e.target.value
+      team2_details: { ...updatedScores[index].team2_details, team_wicket_loss: e.target.value }
     }
   }
 
   else if (title === "team2overplayed") {
     updatedScores[index] = {
       ...updatedScores[index],
-      team2_over_played: e.target.value
+      team2_details: { ...updatedScores[index].team2_details, team_over_played: e.target.value }
     }
   }
 
@@ -71,7 +71,7 @@ export function handleChangeFootballScores(footballScores, setFootballScores, e,
   else if (title === "team1Goals") {
     updatedScores[index] = {
       ...updatedScores[index],
-      team1_goals: e.target.value
+      team1_details: { ...updatedScores[index].team1_details, team_goals: e.target.value }
     }
   }
 
@@ -79,7 +79,7 @@ export function handleChangeFootballScores(footballScores, setFootballScores, e,
   else if (title === "team2Goals") {
     updatedScores[index] = {
       ...updatedScores[index],
-      team2_goals: e.target.value
+      team2_details: { ...updatedScores[index].team2_details, team_goals: e.target.value }
     }
   }
 

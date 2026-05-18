@@ -2,11 +2,13 @@ import { Router, Response, Request } from "express";
 import mongoose from "mongoose";
 import EventsList from "../../models/eventsListModel";
 import AlmanacList from "../../models/almanacListModel";
-import CricketScore from "../../models/cricketScoreModel";
-import FootballScore from "../../models/footballScoreModel";
 import VolleyballScore from "../../models/volleyballScoreModel";
 import BasketballScore from "../../models/basketballScoreModel";
 import HomepageElementList from "../../models/homepageElementListModel";
+import { deleteCricketScore } from "../../controllers/cricket.controller";
+import { deleteFootballScore } from "../../controllers/football.controller";
+import { deleteBasketballScore } from "../../controllers/basketball.controller";
+import { deleteBlog } from "../../controllers/blog.controller";
 
 const adminDeleteRouter = Router();
 
@@ -54,16 +56,10 @@ adminDeleteRouter.delete("/homepage-element", async (req: Request, res: Response
 });
 
 // Delete Cricket Score
-adminDeleteRouter.delete("/cricket-scores", async (req: Request, res: Response) => {
-  const { id } = req.query;
-  await deleteById(CricketScore, id as string, "Cricket score", res);
-});
+adminDeleteRouter.delete("/cricket-scores", deleteCricketScore);
 
 // Delete Football Score
-adminDeleteRouter.delete("/football-scores", async (req: Request, res: Response) => {
-  const { id } = req.query;
-  await deleteById(FootballScore, id as string, "Football score", res);
-});
+adminDeleteRouter.delete("/football-scores", deleteFootballScore);
 
 // Delete Volleyball Score
 adminDeleteRouter.delete("/volleyball-scores", async (req: Request, res: Response) => {
@@ -72,9 +68,9 @@ adminDeleteRouter.delete("/volleyball-scores", async (req: Request, res: Respons
 });
 
 // Delete Basketball Score
-adminDeleteRouter.delete("/basketball-scores", async (req: Request, res: Response) => {
-  const { id } = req.query;
-  await deleteById(BasketballScore, id as string, "Basketball score", res);
-});
+adminDeleteRouter.delete("/basketball-scores", deleteBasketballScore);
+
+// Delete Blog 
+adminDeleteRouter.delete("/delete-blog/:id", deleteBlog);
 
 export default adminDeleteRouter;

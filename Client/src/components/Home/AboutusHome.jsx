@@ -75,19 +75,19 @@ const AboutusHome = () => {
               </div> */}
 
       <div className="cards mt-20 grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-0 justify-between h-full max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
-        <div className="card one rounded-r-md m-3 md:m-0 max-sm:w-[85%]">
+        <div className="card one rounded-r-md m-3 md:m-0 max-sm:w-[85%] max-sm:hidden">
           <img data-aos="flip-down" src={img1} alt="demo_image" />
         </div>
         <div className="card two rounded-md m-3 md:m-0 max-sm:w-[85%]">
           <img data-aos="flip-down" src={img2} alt="demo_image" />
         </div>
-        <div className="card three rounded-md m-3 md:m-0 max-sm:w-[85%]">
+        <div className="card three rounded-md m-3 md:m-0 max-sm:w-[85%] max-sm:hidden">
           <img data-aos="flip-down" src={img3} alt="demo_image" />
         </div>
         <div className="card four rounded-md m-3 md:m-0 max-sm:w-[85%]">
           <img data-aos="flip-down" src={img4} alt="demo_image" />
         </div>
-        <div className="card five rounded-l-md m-3 md:m-0 max-sm:w-[85%]">
+        <div className="card five rounded-l-md m-3 md:m-0 max-sm:w-[85%] max-sm:hidden">
           <img data-aos="flip-down" src={img5} alt="demo_image" />
         </div>
       </div>

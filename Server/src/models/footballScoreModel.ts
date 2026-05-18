@@ -1,17 +1,29 @@
 import mongoose, { Schema, Document } from "mongoose";
 
+interface TeamDetailsType {
+  team_name: string;
+  team_logo: string;
+  team_goals: number;
+  team_logo_id : string
+}
+
 export interface IFootballScore extends Document {
   match_type: string;
-  team1_name: string;
-  team2_name: string;
-  team1_logo: string;
-  team2_logo: string;
-  team1_goals?: number;
-  team2_goals?: number;
   completed: "yes" | "no";
+  team1_details : TeamDetailsType,
+  team2_details : TeamDetailsType, 
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+const teamDetailSchema = new Schema<TeamDetailsType>(
+  {
+    team_name : {type : String, required : true, trim : true},
+    team_logo : {type : String, required : true},
+    team_goals : {type : Number, required : true},
+    team_logo_id : {type : String}
+  }
+)
 
 const footballSchema = new Schema<IFootballScore>(
   {
@@ -20,34 +32,11 @@ const footballSchema = new Schema<IFootballScore>(
       required: [true, "Match type is required"],
       trim: true
     },
-    team1_name: {
-      type: String,
-      required: [true, "Team 1 name is required"],
-      trim: true
-    },
-    team2_name: {
-      type: String,
-      required: [true, "Team 2 name is required"],
-      trim: true
-    },
-    team1_logo: {
-      type: String,
-      required: [true, "Team 1 logo is required"]
-    },
-    team2_logo: {
-      type: String,
-      required: [true, "Team 2 logo is required"]
-    },
-    team1_goals: {
-      type: Number,
-      min: [0, "Goals cannot be negative"],
-      default: 0
-    },
-    team2_goals: {
-      type: Number,
-      min: [0, "Goals cannot be negative"],
-      default: 0
-    },
+   
+    team1_details : teamDetailSchema,
+    
+    team2_details : teamDetailSchema,
+
     completed: {
       type: String,
       enum: ["yes", "no"],

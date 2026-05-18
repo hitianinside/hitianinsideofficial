@@ -1,38 +1,58 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { isAuthenticatedContext } from '../../context/context';
 import { motion, AnimatePresence } from 'motion/react';
 import { FiLogOut, FiBarChart2, FiUser, FiEdit2 } from 'react-icons/fi';
+import Loader from '../../admin/components/Loader/Loader';
 import { getUserInfo } from '../../api/userapis';
 import UpdateUserInfo from '../../components/UpdateUserInfo/UpdateUserInfo';
 
 const Profile = () => {
   const navigate = useNavigate();
+
   const [userInfo, setUserInfo] = useState(null);
   const [allUserData, setAllUserData] = useState(null);
-  const { setIsAuthenticated, isAuthenticated } = useContext(isAuthenticatedContext);
+
+  const { setIsAuthenticated, isAuthenticated } =
+    useContext(isAuthenticatedContext);
+
+  const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
 
-  useEffect(() => {
-    const data = localStorage.getItem('user-info');
-    if (data) {
-      const userData = JSON.parse(data);
-      setUserInfo(userData);
-    }
-  }, []);
+  const fetchUserInfo = useCallback(async () => {
+    try {
+      setIsLoading(true);
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      if (isAuthenticated) {
-        const { userData } = await getUserInfo();
-        setAllUserData(userData);
-      }else{
-        return null;
+      if (!isAuthenticated) {
+        navigate('/sign-up');
+        return;
       }
-    }
 
+      const { userData } = await getUserInfo();
+
+      if (!userData) {
+        localStorage.removeItem('user-info');
+        setIsAuthenticated(false);
+        navigate('/sign-up');
+        return;
+      }
+
+      setAllUserData(userData);
+      setUserInfo(userData);
+    } catch (error) {
+      console.log(error);
+
+      localStorage.removeItem('user-info');
+      setIsAuthenticated(false);
+      navigate('/sign-up');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [isAuthenticated, navigate, setIsAuthenticated]);
+
+  useEffect(() => {
     fetchUserInfo();
-  }, [isUpdated, isAuthenticated]);
+  }, [isUpdated, fetchUserInfo]);
 
   const handleLogout = () => {
     localStorage.removeItem('user-info');
@@ -47,21 +67,28 @@ const Profile = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.1
-      }
-    }
+        delayChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 300, damping: 24 } }
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 300, damping: 24 },
+    },
   };
 
-  const buttonStyle = "w-auto flex items-center justify-center gap-2 py-2.5 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md transform active:scale-95";
+  const buttonStyle = 'w-auto flex items-center justify-center gap-2 py-2.5 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md transform active:scale-95';
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
-    <div className='min-h-[40vh] overflow-x-hidden py-12 px-4 flex flex-col items-center text-gray-100 font-sans'>
-
+    <div className="min-h-[40vh] overflow-x-hidden py-12 px-4 flex flex-col items-center text-gray-100 font-sans">
       <AnimatePresence mode="wait">
         {isAuthenticated ? (
           <motion.div
@@ -96,33 +123,46 @@ const Profile = () => {
 
               {/* User Details */}
               <div className="flex flex-col items-center sm:items-start text-center sm:text-left z-10 w-full space-y-2">
-                <p className="text-red-400 text-sm font-bold tracking-widest uppercase">Student Profile</p>
+                <p className="text-red-400 text-sm font-bold tracking-widest uppercase">
+                  Student Profile
+                </p>
+
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                   {allUserData?.name || 'User Name'}
                 </h2>
+
                 <div className="w-full pt-2 mt-2 border-t border-red-500/20">
                   <p className="text-gray-300 text-sm sm:text-base font-medium truncate w-full">
                     Email id : {allUserData?.email || 'user@example.com'}
                   </p>
+
                   <p className="text-gray-300 text-sm sm:text-base font-medium truncate w-full uppercase">
                     Department : {allUserData?.department || 'CSE'}
                   </p>
+
                   <p className="text-gray-300 text-sm sm:text-base font-medium truncate w-full uppercase">
-                    Year : {allUserData?.year + " year" || '1st year'}
+                    Year : {allUserData?.year || '1st'} year
                   </p>
                 </div>
+
                 <button
                   onClick={() => setIsUpdated(true)}
-                  className={`${buttonStyle} bg-yellow-600 hover:bg-yellow-500 text-white shadow-yellow-900/50`}>
-                  {FiEdit2} Edit
+                  className={`${buttonStyle} bg-yellow-600 hover:bg-yellow-500 text-white shadow-yellow-900/50`}
+                >
+                  <FiEdit2 /> Edit
                 </button>
               </div>
             </motion.div>
 
             {/* Action Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap justify-center w-full gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap justify-center w-full gap-4"
+            >
               <NavLink to="/scorecards">
-                <button className={`${buttonStyle} bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] w-fit`}>
+                <button
+                  className={`${buttonStyle} bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] w-fit`}
+                >
                   <FiBarChart2 className="w-5 h-5" /> Match Scores
                 </button>
               </NavLink>
@@ -135,38 +175,18 @@ const Profile = () => {
               </button>
             </motion.div>
           </motion.div>
-        ) : (
-          <motion.div
-            key="unauthenticated"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="w-full max-w-md bg-black/40 backdrop-blur-md border border-red-900/50 p-10 rounded-3xl flex flex-col items-center gap-6 shadow-2xl"
-          >
-            <div className="w-16 h-16 bg-red-900/30 rounded-full flex items-center justify-center mb-2 border border-red-500/20">
-              <FiUser className="w-8 h-8 text-red-400" />
-            </div>
-            <h2 className="text-2xl font-bold text-center">Authentication Required</h2>
-            <p className="text-gray-400 text-center text-sm mb-4">Please sign in to view your profile details and personal settings.</p>
-
-            <div className="flex flex-wrap justify-around w-full gap-4">
-              <NavLink to="/sign-up">
-                <button className={`${buttonStyle} bg-red-600 hover:bg-red-500 shadow-red-900/50`}>
-                  Sign In
-                </button>
-              </NavLink>
-              <NavLink to="/scorecards">
-                <button className={`${buttonStyle} bg-transparent border border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500`}>
-                  Match Scores
-                </button>
-              </NavLink>
-            </div>
-          </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
-      {
-        isUpdated && <UpdateUserInfo email={allUserData.email} name={allUserData.name} department={allUserData.department} year={allUserData.year} setIsUpdated={setIsUpdated} />
-      }
+
+      {isUpdated && (
+        <UpdateUserInfo
+          email={allUserData.email}
+          name={allUserData.name}
+          department={allUserData.department}
+          year={allUserData.year}
+          setIsUpdated={setIsUpdated}
+        />
+      )}
     </div>
   );
 };

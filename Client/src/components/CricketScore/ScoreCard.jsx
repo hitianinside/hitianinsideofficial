@@ -36,18 +36,18 @@ const ScoreCard = ({ score, isLive }) => {
           <div className="flex items-center gap-3 md:flex-col">
             <div className="relative">
               <img
-                src={score.team1_logo}
-                alt={score.team1_name}
+                src={score.team1_details.team_logo}
+                alt={score.team1_details.team_name}
                 className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/20 shadow-md"
               />
             </div>
             <span className="font-bold text-sm md:mt-3 text-left md:text-center md:h-10 line-clamp-1 md:line-clamp-2">
-              {score.team1_name}
+              {score.team1_details.team_name}
             </span>
           </div>
           <div className="flex flex-col items-end md:items-center md:mt-2">
-            <span className="text-xl md:text-2xl font-black">{score.team1_run}/{score.team1_wicket_loss}</span>
-            <span className="text-[9px] md:text-[10px] text-gray-400 font-mono uppercase">Overs: {score.team1_over_played}</span>
+            <span className="text-xl md:text-2xl font-black">{score.team1_details.team_run}/{score.team1_details.team_wicket_loss}</span>
+            <span className="text-[9px] md:text-[10px] text-gray-400 font-mono uppercase">Overs: {score.team1_details.team_over_played}</span>
           </div>
         </div>
 
@@ -70,18 +70,18 @@ const ScoreCard = ({ score, isLive }) => {
           <div className="flex items-center gap-3 md:flex-col">
             <div className="relative">
               <img
-                src={score.team2_logo}
+                src={score.team2_details.team_logo}
                 alt={score.team2_name}
                 className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover border-2 border-white/20 shadow-md"
               />
             </div>
             <span className="font-bold text-sm md:mt-3 text-left md:text-center md:h-10 line-clamp-1 md:line-clamp-2">
-              {score.team2_name}
+              {score.team2_details.team_name}
             </span>
           </div>
           <div className="flex flex-col items-end md:items-center md:mt-2">
-            <span className="text-xl md:text-2xl font-black">{score.team2_run}/{score.team2_wicket_loss}</span>
-            <span className="text-[9px] md:text-[10px] text-gray-400 font-mono uppercase">Overs: {score.team2_over_played}</span>
+            <span className="text-xl md:text-2xl font-black">{score.team2_details.team_run}/{score.team2_details.team_wicket_loss}</span>
+            <span className="text-[9px] md:text-[10px] text-gray-400 font-mono uppercase">Overs: {score.team2_details.team_over_played}</span>
           </div>
         </div>
       </div>

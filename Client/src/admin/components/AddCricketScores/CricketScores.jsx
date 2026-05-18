@@ -53,9 +53,9 @@ const CricketScores = () => {
             value={cricketScores.matchType}
             placeholder='Enter here'
             onChange={(e) => setCricketScores({ ...cricketScores, matchType: e.target.value })}
-            required />
+            required
+          />
         </div>
-
 
         <div className={inputDivStyle}>
           <label htmlFor="aboutTeam">Team 1 name</label>
@@ -65,7 +65,8 @@ const CricketScores = () => {
             value={cricketScores.team1Name}
             placeholder='Enter here'
             onChange={(e) => setCricketScores({ ...cricketScores, team1Name: e.target.value })}
-            required />
+            required
+          />
         </div>
 
         <div className={inputDivStyle}>

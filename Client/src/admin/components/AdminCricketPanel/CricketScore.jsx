@@ -18,11 +18,11 @@ export default function CricketScore({ score, index, cricketScores, setCricketSc
         <div className="flex flex-col items-center sm:items-start gap-2">
           <div className="flex items-center gap-3">
             <img
-              src={score.team1_logo}
-              alt={score.team1_name}
+              src={score.team1_details.team_logo}
+              alt={score.team1_details.team_name}
               className="w-14 h-14 rounded-full object-cover"
             />
-            <span className="font-bold text-xl">{score.team1_name}</span>
+            <span className="font-bold text-xl">{score.team1_details.team_name}</span>
           </div>
 
           <div className="text-sm flex flex-col gap-1">
@@ -30,7 +30,7 @@ export default function CricketScore({ score, index, cricketScores, setCricketSc
               <span>Runs:</span>
               <input
                 type="number"
-                value={score.team1_run}
+                value={score.team1_details.team_run}
                 onChange={(e) =>
                   handleChangeCricketScores(cricketScores, setCricketScores, e, index, "team1run")
                 }
@@ -39,7 +39,7 @@ export default function CricketScore({ score, index, cricketScores, setCricketSc
               /
               <input
                 type="number"
-                value={score.team1_wicket_loss}
+                value={score.team1_details.team_wicket_loss}
                 onChange={(e) =>
                   handleChangeCricketScores(cricketScores, setCricketScores, e, index, "team1wicketloss")
                 }
@@ -51,7 +51,7 @@ export default function CricketScore({ score, index, cricketScores, setCricketSc
               Overs:
               <input
                 type="number"
-                value={score.team1_over_played}
+                value={score.team1_details.team_over_played}
                 onChange={(e) =>
                   handleChangeCricketScores(cricketScores, setCricketScores, e, index, "team1overplayed")
                 }
@@ -72,10 +72,10 @@ export default function CricketScore({ score, index, cricketScores, setCricketSc
         {/* Team 2 */}
         <div className="flex flex-col items-center sm:items-end gap-2">
           <div className="flex items-center gap-3">
-            <span className="font-bold text-xl">{score.team2_name}</span>
+            <span className="font-bold text-xl">{score.team2_details.team_name}</span>
             <img
-              src={score.team2_logo}
-              alt={score.team2_name}
+              src={score.team2_details.team_logo}
+              alt={score.team2_details.team_name}
               className="w-14 h-14 rounded-full object-cover"
             />
           </div>
@@ -85,7 +85,7 @@ export default function CricketScore({ score, index, cricketScores, setCricketSc
               <span>Runs:</span>
               <input
                 type="number"
-                value={score.team2_run}
+                value={score.team2_details.team_run}
                 onChange={(e) =>
                   handleChangeCricketScores(cricketScores, setCricketScores, e, index, "team2run")
                 }
@@ -94,7 +94,7 @@ export default function CricketScore({ score, index, cricketScores, setCricketSc
               /
               <input
                 type="number"
-                value={score.team2_wicket_loss}
+                value={score.team2_details.team_wicket_loss}
                 onChange={(e) =>
                   handleChangeCricketScores(cricketScores, setCricketScores, e, index, "team2wicketloss")
                 }
@@ -106,7 +106,7 @@ export default function CricketScore({ score, index, cricketScores, setCricketSc
               Overs:
               <input
                 type="number"
-                value={score.team2_over_played}
+                value={score.team2_details.team_over_played}
                 onChange={(e) =>
                   handleChangeCricketScores(cricketScores, setCricketScores, e, index, "team2overplayed")
                 }

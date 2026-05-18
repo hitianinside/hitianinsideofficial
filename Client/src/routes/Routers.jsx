@@ -20,6 +20,8 @@ const PhotoSubmition = lazy(() => import('../pages/PhotoSubmition/PhotoSubmition
 const AlmanacForm = lazy(() => import('../pages/AlmanacForm/AlmanacForm'));
 const MatchesScores = lazy(() => import('../pages/MatchesScores/MatchesScores'));
 // const RecruitmentPage = lazy(() => import('../pages/RecruitmentForm/RecruitmentPage'));
+const Blogs = lazy(() => import("../pages/Blogs/Blogs"));
+const BlogDetails = lazy(() => import("../pages/Blogs/BlogDetails/BlogDetails"));
 
 // admin pages
 const AdminProfile = lazy(() => import('../admin/pages/profile/AdminProfile'));
@@ -28,6 +30,7 @@ const Scorecard = lazy(() => import('../admin/pages/scorecard/Scorecard'));
 const AdminAlmanac = lazy(() => import('../admin/pages/almanac/AdminAlmanac'));
 const AdminHome = lazy(() => import('../admin/pages/homepagePoster/AdminHome'));
 const UsersData = lazy(() => import('../admin/pages/users/UsersData'));
+const AdminBlogs = lazy(() => import('../admin/pages/blogs/AdminBlogs'));
 
 function Routers() {
 
@@ -63,6 +66,8 @@ function Routers() {
         <Route path='/about' element={<About />} />
         <Route path='/scorecards' element={<MatchesScores />} />
         {/* <Route path='/recruitment' element={<RecruitmentPage />} /> */}
+        <Route path='/stories' element={<Blogs/>}/>
+        <Route path="/stories/:slug" element={<BlogDetails />} />
 
         {/* almanac form pages */}
         <Route path='/almanac/almanac-form' element={<AlmanacForm />} />
@@ -88,6 +93,15 @@ function Routers() {
           element={
             <AdminRoute isAdmin={isAdmin}>
               <Scorecard />
+            </AdminRoute>
+          }
+        />
+
+         <Route
+          path='/admin/add-blog'
+          element={
+            <AdminRoute isAdmin={isAdmin}>
+              <AdminBlogs />
             </AdminRoute>
           }
         />

@@ -71,20 +71,20 @@ const Scorecard = () => {
         {
           isFootball &&
           <>
-          <FootballScores/>
-          <FootballPanel/>
+            <FootballScores />
+            <FootballPanel />
           </>
         }
         {
           isVollyball &&
           <>
-          <VollyballScores/>
+            <VollyballScores />
           </>
         }
         {
           isBasketball &&
           <>
-          <BasketballScores/>
+            <BasketballScores />
           </>
         }
       </div>

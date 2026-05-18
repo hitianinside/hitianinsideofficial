@@ -11,7 +11,8 @@ import Banner from '../../components/Banner/Banner';
 import HomeSkeleton from "../../components/Home/HomeSkeleton";
 import AboutusHome from "../../components/Home/AboutusHome";
 import GellaryHome from "../../components/Home/GalleryHome";
-import EventsHome from "../../components/Home/EventsHome";
+import StoriesForHome from "../../components/Home/StoriesForHome";
+import ScoresForHome from "../../components/Home/ScoresForHome";
 
 function Home() {
 
@@ -29,9 +30,9 @@ function Home() {
     return () => clearTimeout(timeout);
   }, [])
 
-  if(loadingPage){
+  if (loadingPage) {
     return (
-      <HomeSkeleton/>
+      <HomeSkeleton />
     );
   }
 
@@ -56,14 +57,20 @@ function Home() {
         <img src={curve} alt="curve" className="curve mt-[-8%] w-full" />
       </section>
 
+
       {/* About us */}
-       <AboutusHome/>
+      <AboutusHome />
+
+      {/* Story from instagram */}
+      <StoriesForHome />
+
+      {/* match scores */}
+      <ScoresForHome />
 
       {/* <Gallery/> */}
-      <GellaryHome/>
-
+      <GellaryHome />
       {/* Events */}
-      <EventsHome/>
+      {/* <EventsHome/>  */}
     </div>
   );
 }

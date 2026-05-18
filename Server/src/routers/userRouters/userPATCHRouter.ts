@@ -3,7 +3,7 @@ import User from "../../models/authModel";
 
 const userPatchRouter = Router();
 
-userPatchRouter.patch("/update",async (req : Request, res : Response) => {
+userPatchRouter.patch("/update", async (req : Request, res : Response) => {
   try {
     const {name, department, year, email} = req.body;
     
