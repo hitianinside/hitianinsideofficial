@@ -1,0 +1,25 @@
+
+.hiddenbox{
+    display: none;
+    width: 100%;
+    font-weight: 500;
+}
+
+.openbox{
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 600;
+    width: 100%;
+}
+
+@media screen and (max-width : 768px){
+    .openbox{
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .hiddenbox{
+        display: block;
+    }
+  }
